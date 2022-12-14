@@ -88,7 +88,7 @@ prev.addEventListener('click', function() {
     backwards();
 });
 
-// diamo addEventListener ad ogni elemento di containerImg
+// diamo addEventListener ad ogni elemento di containerImg del thumbnail
 for (let i = 0; i < imagesArray.length; i++) {
     containerImg[i].addEventListener('click', function() {
         // verifico l'elemento precedente attivo
@@ -118,24 +118,24 @@ for (let i = 0; i < imagesArray.length; i++) {
     })
 }
 
+// eseguo l'autoplay, lo stop e l'inversione
 let autoPlay = setInterval (forward, 1000);
-let check = false;
 
 document.getElementById('autoplay').addEventListener('click', function() {
-    // clearInterval (autoPlay);
-    if (check == true) {
-        autoPlay = setInterval (forward, 1000);
-        check = false;
-    }
+    clearInterval (autoPlay);
+    autoPlay = setInterval (forward, 1000);
 })
 
 document.getElementById('stop-autoplay').addEventListener('click', function() {
-    if (check == false) {
-        clearInterval (autoPlay);
-        check = true;
-    }
+    clearInterval (autoPlay);
 })
 
+document.getElementById('reverseplay').addEventListener('click', function() {
+    clearInterval (autoPlay);
+    autoPlay = setInterval (backwards, 1000);
+})
+
+// Funzioni per il forward e backwards
 function forward() {
     //verifico l'elemento attivo (itemActive)
     const lastActiveItem = items[itemActive];

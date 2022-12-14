@@ -52,6 +52,7 @@
 .container-img {
     height: 20%;
     position: relative;
+    cursor: pointer;
 }
 
 .cover {
