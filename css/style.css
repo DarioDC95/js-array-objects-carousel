@@ -112,6 +112,7 @@ img{
 .circles-container{
     display: flex;
     justify-content: center;
+    margin-bottom: 50px;
 }
 
 .circle{
@@ -124,6 +125,23 @@ img{
     cursor: pointer;
 }
 
-.circle.active, .circle:hover{
+.circle.active, .circle:hover {
     background-color: rgba(174, 174, 174, 1); 
+}
+
+button {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 10px 20px;
+    background-color: blue;
+    border-radius: 5px;
+    border: solid 3px yellowgreen;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: aqua;
+    color: blue;
+    border: solid 3px blueviolet;
 }

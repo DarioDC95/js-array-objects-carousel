@@ -38,7 +38,7 @@ for(let i = 0; i < imagesArray.length; i++){
     itemsContent += `<div class="item">
                          <img src="./img/${imagesArray[i].image}" alt="${imagesArray[i].image}">
                          <div class="title-description">
-                             <h3>${imagesArray[i].title}</h3>
+                             <h2>${imagesArray[i].title}</h2>
                              <p>${imagesArray[i].description}</p>
                          </div>
                      </div>`
