@@ -1,7 +1,7 @@
 //Creo array immagini
 const imagesArray = [
     {
-        title: "Spider-Man",
+        title: "Spider-Man: Miles Morales",
         description: "Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.",
         image: "01.webp"
     },
@@ -54,6 +54,9 @@ for(i = 0; i < imagesArray.length; i++) {
                             </div>`
 }
 
+// creiamo un array dei div con classe container-img
+const containerImg = document.getElementsByClassName('container-img');
+
 //inseriamo le immagini nel div che le deve contenere
 const itemsSlider = document.querySelector('.item-slider');
 itemsSlider.innerHTML += itemsContent;
@@ -61,7 +64,6 @@ itemsSlider.innerHTML += itemsContent;
 //Prendiamo la prima immagine dell'array e la rendiamo attiva
 
 //const items = document.querySelector('.item'); //ALTERNATIVA
-
 const img_side = document.getElementsByClassName('cover');
 const items = document.getElementsByClassName('item');
 let itemActive = 0;
@@ -71,7 +73,6 @@ img_side[itemActive].classList.add('borderlined');
 img_side[itemActive].classList.remove('overlay');
 
 //rendo attivo anche il primo cerchio di navigazione
-
 const circles = document.getElementsByClassName('circle');
 
 circles[itemActive].classList.add('active');
@@ -86,6 +87,36 @@ next.addEventListener('click', function() {
 prev.addEventListener('click', function() {
     backwards();
 });
+
+// diamo addEventListener ad ogni elemento di containerImg
+for (let i = 0; i < imagesArray.length; i++) {
+    containerImg[i].addEventListener('click', function() {
+        // verifico l'elemento precedente attivo
+        const lastActiveItem = items[itemActive];
+        const lastCircleActive = circles[itemActive];
+        const lastImg_side = img_side[itemActive];
+
+        // disattivo l'elemento precedente
+        lastActiveItem.classList.remove('active');
+        lastImg_side.classList.remove('borderlined');
+        lastImg_side.classList.add('overlay');
+        lastCircleActive.classList.remove('active');
+
+        // rendo itemActive dello stesso valore dell'indice clickato
+        itemActive = i;
+
+        // verifico l'elemento clickato
+        const activeItem = items[itemActive];
+        const circleActive = circles[itemActive];
+        const activeImg_side = img_side[itemActive];
+
+        // attivo l'elemento clickato
+        activeItem.classList.add('active');
+        activeImg_side.classList.add('borderlined');
+        activeImg_side.classList.remove('overlay');
+        circleActive.classList.add('active');
+    })
+}
 
 let autoPlay = setInterval (forward, 1000);
 let check = false;
